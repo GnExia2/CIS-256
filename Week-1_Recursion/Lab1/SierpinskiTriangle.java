@@ -1,44 +1,36 @@
-// Java program to print
-// sierpinski triangle.
-import java.util.*;
-import java.io.*;
+public class SierpinskiTriangle {
+    static void printSierpinski(int n, int y, int x) {
+        if (y == 0) {
+            return;
+        }
 
-public class SierpinskiTriangle
-{
-    static void printSierpinski(int n)
-    {
-        for (int y = n - 1; y >= 0; y--) {
+        printSpaces(y - 1); // Print leading spaces
 
-            // printing space till
-            // the value of y
-            for (int i = 0; i < y; i++) {
-                System.out.print(" ");
+        for (int i = 0; i + y < n; i++) {
+            if ((i & (y - 1)) != 0) {
+                System.out.print("   "); // Print double spaces
+            } else {
+                System.out.print("* "); // Print '*'
             }
+        }
 
-            // printing '*'
-            for (int x = 0; x + y < n; x++) {
+        System.out.println();
 
-                // printing '*' at the appropriate
-                // position is done by the and
-                // value of x and y wherever value
-                // is 0 we have printed '*'
-                if ((x & y) != 0)
-                    System.out.print(" "
-                                    + " ");
-                else
-                    System.out.print("* ");
-            }
+        printSierpinski(n, y - 1, x); // Recursive call for upper-left triangle
+        printSierpinski(n, y - 1, x + 2 * (y - 1)); // Recursive call for upper-right triangle
+    }
 
-            System.out.print("\n");
+    static void printSpaces(int count) {
+        for (int i = 0; i < count; i++) {
+            System.out.print(" ");
         }
     }
 
-    // Driver code
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         int n = 32;
+        int height = n / 2 + 1; // Calculate height of the main equilateral triangle
 
         // Function calling
-        printSierpinski(n);
+        printSierpinski(n, height, 0);
     }
 }
