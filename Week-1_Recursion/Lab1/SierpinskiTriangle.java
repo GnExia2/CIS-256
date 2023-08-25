@@ -1,3 +1,9 @@
+/**
+  * @author Garrick Ngai
+  * @since 8/25/2023
+  */
+
+
 import java.util.Scanner;
 
 public class SierpinskiTriangle {
@@ -6,6 +12,12 @@ public class SierpinskiTriangle {
     System.out.println("EX: 2, 4, 8, 16, 32, 64, ...");
   }
 
+    
+    /** 
+     * @param n
+     * @param y
+     * @param x
+     */
     static void printSierpinski(int n, int y, int x) {
         if (y < 0) {
             return;
@@ -26,12 +38,19 @@ public class SierpinskiTriangle {
         printSierpinski(n, y - 1, x); // Recursive call for the next row
     }
 
+    
+    /** 
+     * @param count
+     */
     static void printSpaces(int count) {
         for (int i = 0; i < count; i++) {
             System.out.print(" ");
         }
     }
 
+    /**
+     * @param args
+     */
     public static void main(String args[]) {
       Scanner scnr = new Scanner(System.in);
       printMenu();
@@ -39,5 +58,6 @@ public class SierpinskiTriangle {
 
         // Function calling
         printSierpinski(n, n - 1, 0); // Start from the bottom row
+        scnr.close();
     }
 }

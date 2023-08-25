@@ -1,3 +1,8 @@
+/**
+  * @author Garrick Ngai
+  * @since 8/25/2023
+  */
+
 public class SierpinskiCarpet {
 
     public static void main(String[] args) {
